@@ -1,0 +1,35 @@
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('', views.index_view, name='index'),
+    path('home/', views.home_view, name='home'),
+    path('artist/<int:user_id>', views.user_content_view, name='user-content'),
+    path('poetry/', views.poetry_view, name='poetry'),
+    path('podcasts/', views.podcast_view, name='podcast'),
+    path('music/', views.music_view, name = 'music'),
+    path('trending/', views.trending_view, name='trending'),
+    path('admin-update/', views.settings_view, name='settings'),
+    path('user-profile/', views.settings_view, name='user_profile'),
+    path('video/<int:video_id>', views.video_view, name='video'),
+    path('audio/<int:audio_id>', views.audio_view, name='audio'),
+    path('create-profile/', views.create_profile, name='create-profile'),
+    path('my_uploads/', views.my_uploads, name='my-uploads'),
+    path('upload/audio/', views.upload_audio, name='upload_audio'),
+    path('upload/video/', views.upload_video, name='upload_video'),
+    path('profile/', views.profile_view, name='profile'),
+    path('audio_delete/<int:audio_id>', views.delete_audio, name='aud-delete'),
+    path('video_delete/<int:video_id>', views.delete_video, name='vid-delete'),
+    path('search/', views.search, name='search'),
+    path('download/<int:audio_id>/', views.download_audio, name='download_audio'),
+    path('like/<int:media_id>/<str:media_type>', views.like, name='like'),
+
+    #Authentication urls
+    path('email_verification/', views.email_view, name='email'),
+    path('email_verification-new_code/', views.reemail_view, name='reemail'),
+    path('forgot_password/', views.forgot_view, name='forgot'),
+    path('reset_password/<uuid:token>/', views.reset_password, name='reset_password'),
+    path('reset_link_sent/', views.reset_password, name='password_reset_sent'),
+    path('sign-up/', views.signup_view, name='signup'),
+    path('log-in/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+]
