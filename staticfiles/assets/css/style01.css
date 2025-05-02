@@ -1,0 +1,74 @@
+.testimonials {
+    max-width: 1000px;
+    padding: 20px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.testimonial-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.testimonial-image {
+    width: 20%;
+    height: 20%;
+    border-radius: 10%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+}
+
+.testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.testimonial-role {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.testimonial-text {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Owl Carousel Styling */
+.owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+}
+
+.owl-nav .owl-prev {
+    left: -30px;
+}
+
+.owl-nav .owl-next {
+    right: -30px;
+}
