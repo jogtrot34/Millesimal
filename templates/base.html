@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Millesimal Arts and Entertainment LTD</title>
+  <!-- Linking Unicons For Icons -->
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="stylesheet" href="{% static 'front/style.css'%}">
+  <link rel="stylesheet" href="{% static 'vid_player/styles.css'%}">
+  <link rel="stylesheet" href="{% static 'assets/mp/style.css'%}">
+  <link rel="stylesheet" href="{% static 'cards/css/style.css'%}">
+  <link rel="stylesheet" href="{% static 'assets/previews/style.css'%}">
+  <script src="{% static 'assets/previews/script.js'%}" defer></script>
+  <script src="{% static 'assets/mp/script.js'%}" defer></script>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+ <!-- Font Awesome 6 (latest as of now) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="sidebar-hidden">
+  <div class="container">
+    <!-- Header / Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-section nav-left">
+          <button class="nav-button menu-button">
+            <i class="uil uil-bars"></i>
+          </button>
+          <a href="{% url 'home'%}" class="nav-logo">
+            <img src="{% static 'front/images/logo.png'%}" alt="Logo" class="logo-image" width="100%" height="100px">
+            <h2 class="logo-text" style="font-size: 15px;">Millesimal Arts and Entertainment LTD</h2>
+          </a>
+        </div>
+
+        <div class="nav-section nav-center">
+          <form method="POST" action="{% url 'search' %}" class="search-form">{% csrf_token %}
+            <input type="text" placeholder="Search" class="search-input" required name="q" value="{{ query }}">
+            <button class="nav-button search-button">
+              <i class="uil uil-search"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="nav-section nav-right">
+          <button class="nav-button search-button">
+            <i class="uil uil-search"></i>
+          </button>
+          <button class="nav-button theme-button">
+            <i class="uil uil-moon"></i>
+          </button>
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'settings' %}"><img src="{{request.user.profile.profile_photo.url}}" alt="User Image" class="user-image"></a>
+          {% else %}
+          <a href="{% url 'signup'%}"><img src="{% static 'profiles/blank.png'%}" alt="User Image" class="user-image"></a>
+          {% endif %}
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Layout -->
+    <main class="main-layout">
+      <div class="screen-overlay"></div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="nav-section nav-left">
+          <button class="nav-button menu-button">
+            <i class="uil uil-bars"></i>
+          </button>
+          <a href="#" class="nav-logo">
+            <img src="{% static 'front/images/logo.png'%" alt="Logo" class="logo-image">
+            <h5 class="logo-text" style="font-size: 15px;">Millesimal Arts and Entertainment LTD</h5>
+          </a>
+        </div>
+
+        <div class="links-container">
+          <div class="link-section">
+            <a href="{% url 'home'%}" class="link-item">
+              <i class="uil uil-estate"></i> Home
+            </a>
+          </div>
+
+          <div class="section-separator"></div>
+
+          <div class="link-section">
+            <h4 class="section-title">Explore</h4>
+            <a href="{% url 'trending' %}" class="link-item">
+              <i class="uil uil-fire"></i> Trending
+            </a>
+            <a href="{% url 'music'%}" class="link-item">
+              <i class="uil uil-music"></i> Music
+            </a>
+            <a href="{% url 'poetry'%}" class="link-item">
+              <i class="uil uil-book"></i> Poetry
+            </a>
+            <a href="{% url 'podcast'%}" class="link-item">
+              <i class="fas fa-podcast"></i> Podcasts
+            </a>
+          </div>
+
+          <div class="section-separator"></div>
+
+          <div class="link-section">
+            <a href="{% url 'settings'%}" class="link-item">
+              <i class="uil uil-setting"></i> Settings
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="content-wrapper">
+        <!-- Category List -->
+        <!-- Assume you have a container to display category content -->
+        <div class="category-content"></div>
+
+        {% block main %}
+
+        {% endblock main %}
+
+
+  <!-- Linking custom script -->
+  <script src="{% static 'front/script.js'%}"></script>
+  <script src="{% static 'vid_player/script.js'%}"></script>
+  <script src="{% static 'vid_player/scripts.js'%}"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{% block main %}
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Uploads</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Editors</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+        <h1>Upload something new</h1>
+        {% if messages %}
+          {% for m in messages %}
+          <h5>{{m}}</h5>
+          {% endfor %}
+        {% endif %}
+        <div class="card">
+          <form method="post" enctype="multipart/form-data" style="padding:30px;">
+            {% csrf_token %}
+            <label for="audio" >Audio file:</label>
+            <input type="file" class="form-control" style="margin-bottom:20px" id="audio" name="audio" accept="audio/*">
+            <label for="audio" >Artwork/Cover:</label>
+            <input type="file" class="form-control" style="margin-bottom:20px" name="artwork" accept="image/*">
+            <input type="text" class="form-control" style="margin-bottom:20px" name="title" placeholder="Title">
+            <input type="text" class="form-control" style="margin-bottom:20px" name="ft" placeholder="Ft (if none, leave blank!)">
+            <textarea  class="form-control" style="margin-bottom:20px" name="description" placeholder="Description"></textarea>
+            <select class="form-control" name="type" style="margin-bottom:20px;">
+              <option value="song">Song</option>
+              <option value="poem">Poem</option>
+              <option value="podcast">Podcast</option>
+            </select>
+            <textarea  class="form-control" style="margin-bottom:20px" name="lyrics" placeholder="Song Lyrics"></textarea>
+            <select class="form-control" name="genres" style="margin-bottom:20px;">
+              {% for g in genres %}
+              <option value="{{g.name}}">{{g.name}}</option>
+              {% endfor %}
+            </select>
+            <input type="text" class="form-control" style="margin-bottom:20px" name="album" placeholder="Album/EP">
+            <button class="btn btn-primary w-100"  type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{% endblock main %}

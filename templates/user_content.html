@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+      {% load static %}
+      {% block main %}
+        <!-- Video List -->
+        <div class="artist-info-section" style="width: 100%; padding: 20px; box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); margin-top: 20px; border: 3px solid yellow;;">
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; background: url({{artist.profile.profile_photo.url}});background-size:cover;">
+            <!-- About Us -->
+            <div style="flex: 1; background-color:white; margin:40px; width:50%; border-radius:30px; padding:30px;">
+              <h3>About {{artist.username}}</h3>
+              <p style="margin: 0; font-size: 14px; color: #333;">
+                {{artist.profile.bio}}
+              </p>
+            <!-- Artist Information -->
+              <div style="display:flex; padding:30px;">
+                 <a href="{{artist.profile.fb}}" target="_blank" class="info__link" style="background:yellow; margin:10px;">
+                    <i class="fab fa-facebook"></i>
+                 </a>
+                 <a href="{{artist.profile.ig}}" target="_blank" class="info__link" style="background:yellow; margin:10px;">
+                    <i class="fab fa-instagram"></i>
+                 </a>
+                 <a href="{{artist.profile.tk}}" target="_blank" class="info__link" style="background:yellow; margin:10px;">
+                    <i class="fab fa-tiktok"></i>
+                 </a>
+              </div>
+            </div>
+            <img src="{{artist.profile.profile_photo.url}}" alt="Currently Playing Artist" style="width: 200px; height: 200px; border-radius: 50%;border: 5px solid yellow; box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);">
+          </div>
+        </div>
+        <div class="video-list">
+        {% if videos %}
+        {% for video in videos %}
+          <a href="{% url 'video' video.id %}" class="video-card">
+            <div class="thumbnail-container" >
+              <video autoplay muted style="border-radius:15px; height: 110px;">
+                <source src="{{video.video.url}}" type="video/mp4">
+              </video>
+            </div>
+            <div class="video-info">
+              <img src="{{video.user.profile.profile_photo.url}}" alt="User profile" class="icon">
+              <div class="video-details">
+                <h2 class="title">{{video.title}}</h2>
+                <p class="channel-name">{{video.user.username}}</p>
+                <p class="views">{{video.likes}} likes • {{video.date}}</p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+          {% else %}
+          <a href="#" class="video-card">
+            <div class="thumbnail-container">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">No content</p>
+            </div>
+            <div class="video-info">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Channel Logo" class="icon">
+              <div class="video-details">
+                <h2 class="title">No videos at this time</h2>
+                <p class="channel-name">Developer</p>
+                <p class="views">Y'all have seen it • On development</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+        <hr>
+        <div class="video-list">
+        {% if audios %}
+        {% for audio in audios %}
+          <a href="{% url 'audio' audio.id %}" class="video-card">
+            <div class="thumbnail-container">
+              <img src="{{audio.artwork.url}}" alt="Audio Cover" class="thumbnail">
+              <p class="duration">{{audio.type}}</p>
+            </div>
+            <div class="video-info">
+              <img src="{{audio.user.profile.profile_photo.url}}" alt="Channel Logo" class="icon">
+              <div class="video-details">
+                <h2 class="title">{{audio.title}}</h2>
+                <p class="channel-name">{{audio.user.username}}</p>
+                <p class="views">{{audio.likes}} likes <br>•{{audio.date}}•</p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+          {% else %}
+          <a href="#" class="video-card">
+            <div class="thumbnail-container">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">No content</p>
+            </div>
+            <div class="video-info">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Channel Logo" class="icon">
+              <div class="video-details">
+                <h2 class="title">No audios at this time</h2>
+                <p class="channel-name">Developer</p>
+                <p class="views">Y'all have seen it • On development</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </main>
+  </div>
+
+        {% endblock main %}

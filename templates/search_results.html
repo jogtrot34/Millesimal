@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+      {% load static %}
+      {% block main %}
+        <!-- Video List -->
+          {% if query %}
+          <h3>You search for {{query}}</h3>
+          {% else %}
+          <h3>Buddy use the search bar for important things only!</h3>
+          {% endif %}
+        <div class="video-list">
+        {% if videos %}
+        {% for video in videos %}
+          <a href="{% url 'video' video.id %}" class="video-card">
+            <div class="thumbnail-container">
+              {% if video.thumbnail %}
+              <img src="{{video.thumbnail.url}}" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">{{video.type}}</p>
+              {% else %}
+              <video controls autoplay muted style="border-radius:15px; height: 110px;">
+                <source src="{{video.video.url}}" type="video/mp4">
+              </video>
+              {% endif %}
+            </div>
+            <div class="video-info">
+              <img src="{{video.user.profile.profile_photo.url}}" alt="User profile" class="icon">
+              <div class="video-details">
+                <h2 class="title">{{video.title}}</h2>
+                <p class="channel-name">{{video.user.username}}</p>
+                <p class="views">{{video.views}} Views • {{video.date}}</p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+          {% else %}
+          <a href="#" class="video-card">
+            <div class="thumbnail-container">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">No content</p>
+            </div>
+            <div class="video-info">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Channel Logo" class="icon">
+              <div class="video-details">
+                <h2 class="title">No videos at this time</h2>
+                <p class="channel-name">Developer</p>
+                <p class="views">Y'all have seen it • On development</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+        <hr>
+        <div class="video-list">
+        {% if audios %}
+        {% for audio in audios %}
+          <a href="{% url 'audio' audio.id %}" class="video-card">
+            <div class="thumbnail-container">
+              <img src="{{audio.artwork.url}}" alt="Audio Cover" class="thumbnail">
+              <p class="duration">{{audio.type}}</p>
+            </div>
+            <div class="video-info">
+              <img src="{{audio.user.profile.profile_photo.url}}" alt="Channel Logo" class="icon">
+              <div class="video-details">
+                <h2 class="title">{{audio.title}}</h2>
+                <p class="channel-name">{{audio.user.username}}</p>
+                <p class="views">{{audio.views}} Views <br>•{{audio.date}}•</p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+          {% else %}
+          <a href="#" class="video-card">
+            <div class="thumbnail-container">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">No content</p>
+            </div>
+            <div class="video-info">
+              <img src="{% static 'front/images/no_content.jpeg'%}" alt="Channel Logo" class="icon">
+              <div class="video-details">
+                <h2 class="title">No audios at this time</h2>
+                <p class="channel-name">Developer</p>
+                <p class="views">Y'all have seen it • On development</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </main>
+  </div>
+
+        {% endblock main %}

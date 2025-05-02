@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+      {% block main %}
+        <!-- Video List -->
+
+        <!-- Main Container -->
+<div class="main-container" style="display: flex; gap: 0px; padding: 0px;">
+  <div style=" width:70%;">
+    <div class="video-container paused" data-volume-level="high" style=" width:100%;">
+    <img class="thumbnail-img">
+    <div class="video-controls-container">
+      <div class="timeline-container">
+        <div class="timeline">
+          <img class="preview-img">
+          <div class="thumb-indicator"></div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="play-pause-btn">
+          <svg class="play-icon" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+          </svg>
+          <svg class="pause-icon" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M14,19H18V5H14M6,19H10V5H6V19Z" />
+          </svg>
+        </button>
+        <div class="volume-container">
+          <button class="mute-btn">
+            <svg class="volume-high-icon" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+            <svg class="volume-low-icon" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M5,9V15H9L14,20V4L9,9M18.5,12C18.5,10.23 17.5,8.71 16,7.97V16C17.5,15.29 18.5,13.76 18.5,12Z" />
+            </svg>
+            <svg class="volume-muted-icon" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.53C15.58,18.04 14.83,18.46 14,18.7V20.77C15.38,20.45 16.63,19.82 17.68,18.96L19.73,21L21,19.73L12,10.73M19,12C19,12.94 18.8,13.82 18.46,14.64L19.97,16.15C20.62,14.91 21,13.5 21,12C21,7.72 18,4.14 14,3.23V5.29C16.89,6.15 19,8.83 19,12M16.5,12C16.5,10.23 15.5,8.71 14,7.97V10.18L16.45,12.63C16.5,12.43 16.5,12.21 16.5,12Z" />
+            </svg>
+          </button>
+          <input class="volume-slider" type="range" min="0" max="1" step="any" value="1">
+        </div>
+        <div class="duration-container">
+          <div class="current-time">0:00</div>
+          /
+          <div class="total-time"></div>
+        </div>
+        <button class="captions-btn">
+          <svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M18,11H16.5V10.5H14.5V13.5H16.5V13H18V14A1,1 0 0,1 17,15H14A1,1 0 0,1 13,14V10A1,1 0 0,1 14,9H17A1,1 0 0,1 18,10M11,11H9.5V10.5H7.5V13.5H9.5V13H11V14A1,1 0 0,1 10,15H7A1,1 0 0,1 6,14V10A1,1 0 0,1 7,9H10A1,1 0 0,1 11,10M19,4H5C3.89,4 3,4.89 3,6V18A2,2 0 0,0 5,20H19A2,2 0 0,0 21,18V6C21,4.89 20.1,4 19,4Z" />
+          </svg>
+        </button>
+        <button class="speed-btn wide-btn">
+          1x
+        </button>
+        {% if video.vid_likes.all %}
+        <a class="speed-btn wide-btn" style="color:White;">
+          Liked
+        </a>
+        {% else %}
+        <a href="{% url 'like' video.id 'VID' %}" class="speed-btn wide-btn" style="color:White;">
+          Like
+        </a>
+        {% endif %}
+        <a href="{{video.video.url}}" style="color:white;"><i class="fa fa-download fa-1x"></i></a>
+        <button class="mini-player-btn">
+          <svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z"/>
+          </svg>
+        </button>
+        <button class="theater-btn">
+          <svg class="tall" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z"/>
+          </svg>
+          <svg class="wide" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19 7H5c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 8H5V9h14v6z"/>
+          </svg>
+        </button>
+        <button class="full-screen-btn">
+          <svg class="open" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+          </svg>
+          <svg class="close" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <video src="{{video.video.url}}">
+      <track kind="captions" srclang="en" src="assets/subtitles.vtt">
+    </video>
+  </div>
+  </div>
+
+  <div class="sidebar-section" style="flex: 1; margin-left: 20px; padding: 12px; background: #f0f0f0; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-height: 400px; overflow-y: auto;">
+  <h3 style="margin-bottom: 15px; font-size: 16px;">Related Videos</h3>
+
+  {% if videos %}
+    {% for vid in videos %}
+      {% if vid != video %}
+      <a href="{% url 'video' vid.id %}" style="text-decoration: none;">
+        <div class="media-tile" style="display: flex; gap: 12px; margin-bottom: 16px;">
+          <div class="media-thumb" style="width: 120px; flex-shrink: 0;">
+            <video autoplay="autoplay" muted style="border-radius: 10px; height: 110px; background: black; width: 100%;">
+              <source src="{{ vid.video.url }}" type="video/mp4" pla>
+            </video>
+          </div>
+          <div class="media-details" style="flex-grow: 1;">
+            <h4 style="margin: 0 0 4px 0; font-size: 12px; color: #222;">{{ vid.title }}</h4>
+            <p style="margin: 0 0 4px 0; font-size: 11px; color: #555;">{{ vid.user.username }}</p>
+            <p style="margin: 0; font-size: 10px; color: #999;">{{ vid.views }} Downloads<br>• {{ vid.date }}</p>
+          </div>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p style="font-size: 13px; color: #666;">No related videos found</p>
+  {% endif %}
+</div>
+
+</div>
+<!-- Bottom Section -->
+<div class="artist-info-section" style="width: 100%; background-color: #f0f0f0; padding: 20px; box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+    <!-- About Us -->
+    <div style="flex: 1;">
+      <h3>About Us</h3>
+      <p style="margin: 0; font-size: 14px; color: #333;">
+        Welcome to our platform, where you can explore amazing music and videos from talented artists worldwide. Stay tuned for updates and discover new favorites!
+      </p>
+    </div>
+
+    <!-- Artist Information -->
+    <div style="flex: 1;">
+      <h3>Currently playing {{video.type}}</h3>
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Artist:</strong> {{video.user.username}}</p>
+      {% if video.vid_fts.all %}
+      {% for ft in video.vid_fts.all %}
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Featuring:</strong> {{ft.names}}</p>
+      {% endfor %}
+      {% endif %}
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Video:</strong> {{video.title}}</p>
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Album:</strong> {{video.album}}</p>
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Likes:</strong> {{video.likes}}</p>
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Downloads:</strong> {{video.views}}</p>
+      <div style="display:flex; padding:30px;">
+         <a href="{{video.user.profile.fb}}" target="_blank" class="info__link" style="background:yellow; margin:10px;">
+            <i class="fab fa-facebook"></i>
+         </a>
+         <a href="{{video.user.profile.ig}}" target="_blank" class="info__link" style="background:yellow; margin:10px;">
+            <i class="fab fa-instagram"></i>
+         </a>
+         <a href="{{video.user.profile.tk}}" target="_blank" class="info__link" style="background:yellow; margin:10px;">
+            <i class="fab fa-tiktok"></i>
+         </a>
+          <a href="{% url 'user-content' video.user.id %}" class="info__link" style="background:yellow; margin:10px;">
+            <i class="fa fa-user"></i>
+         </a>
+      </div>
+    </div>
+
+    <!-- Artist Image -->
+    <div style="flex-shrink: 0; width: 120px; text-align: center;">
+      <img src="{{video.user.profile.profile_photo.url}}" alt="Currently Playing Artist" style="width: 100px; height: 100px; border-radius: 50%;border: 2px solid black; box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);">
+    </div>
+  </div>
+</div>
+
+        {% endblock main %}

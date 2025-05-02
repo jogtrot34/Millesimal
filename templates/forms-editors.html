@@ -1,0 +1,60 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{% block main %}
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Creator Content</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+        <h1>Videos</h1>
+        {% if videos %}
+        {% for vid in videos %}
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{vid.title}}</h5>
+              <img src="{{vid.thumbnail.url}}" height="200px">
+              <h5 class="card-title">{{vid.type}}</h5>
+              <h5 class="card-title">Likes: {{vid.likes}}</h5>
+              <h5 class="card-title">Downloads: {{vid.views}}</h5>
+              <br>
+            <a href="{% url 'vid-delete' vid.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+            <p>No videos</p>
+        {% endif %}
+          <hr>
+          <h1>Audios</h1>
+        {% if audios %}
+        {% for aud in audios %}
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{aud.title}}</h5>
+              <img src="{{aud.artwork.url}}" height="200px">
+              <h5 class="card-title">{{aud.type}}</h5>
+              <h5 class="card-title">Likes: {{aud.likes}}</h5>
+              <h5 class="card-title">Downloads: {{aud.views}}</h5>
+              <br>
+              <a href="{% url 'aud-delete' aud.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+            <p>No Audios</p>
+        {% endif %}
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{% endblock main %}

@@ -1,0 +1,129 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{% block main %}
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Users</li>
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="{{ user.profile.profile_photo.url}}" alt="Profile" class="rounded-circle">
+              <h2>{{user.username}}</h2>
+              <h3>{{user.email}}</h3>
+              <div class="social-links mt-2">
+                <a href="{{user.profile.fb}}" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="{{user.profile.ig}}" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="{{user.profile.tk}}" class="linkedin"><i class="fab fa-tiktok"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <h5 class="card-title">About</h5>
+                  <p class="small fst-italic">{{user.profile.bio}}</p>
+
+                  <h5 class="card-title">Profile Details</h5>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Username</div>
+                    <div class="col-lg-9 col-md-8">{{user.username}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Account type</div>
+                    <div class="col-lg-9 col-md-8">{{user.profile.type}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Email</div>
+                    <div class="col-lg-9 col-md-8">{{user.email}}
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                  <h3>Profile</h3>
+                  <div class="profile-section">
+                    <form action="#" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                      <img src="{{user.profile.profile_photo.url}}" height="100px"><br>
+                      <label for="video" >Profile Pic:</label>
+                      <input type="file" class="form-control" style="margin-bottom:20px" name="pic" accept="image/*">
+                      <input type="text" class="form-control" style="margin-bottom:20px" name="first" placeholder="{{request.user.first_name}}">
+                      <input type="text" class="form-control" style="margin-bottom:20px" name="last" placeholder="{{request.user.last_name}}">
+                      <input type="text" class="form-control" style="margin-bottom:20px" name="username" placeholder="{{request.user.username}}">
+                      <input type="email" class="form-control" style="margin-bottom:20px" name="email" placeholder="{{request.user.email}}">
+                      <input type="text" class="form-control" style="margin-bottom:20px" name="fb" placeholder="Facebook link">
+                      <input type="text" class="form-control" style="margin-bottom:20px" name="ig" placeholder="Instagram link">
+                      <input type="text" class="form-control" style="margin-bottom:20px" name="tk" placeholder="Tiktok link">
+                      <textarea  class="form-control" style="margin-bottom:20px" name="bio" placeholder="Bio"></textarea>
+                      <button class="btn btn-primary w-100"  type="submit">Upload</button>
+                    </form>
+                  </div>
+                </section>
+                </div>
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                      <section class="settings-container">
+                        <h3>Change Password</h3>
+                        <form action="#" method="POST">{% csrf_token %}
+                          <div class="input-group">
+                            <label for="confirm-new-password">Current Password:</label>
+                            {{sform.old_password}}
+                          </div>
+                          <div class="input-group">
+                            <label for="confirm-new-password">Create New Password:</label>
+                            {{sform.new_password1}}
+                          </div>
+                          <div class="input-group">
+                            <label for="confirm-new-password">Confirm New Password:</label>
+                            {{sform.new_password2}}
+                          </div>
+                          <button type="submit" class="btn">Update Password</button>
+                        </form>
+                      </section>
+                </div>
+
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{% endblock main%}

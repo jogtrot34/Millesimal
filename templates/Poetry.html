@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+      {% block main %}
+        <!-- Video List -->
+
+        <!-- Main Container -->
+<div class="main-container" style="display: flex; gap: 20px; padding: 20px;">
+
+  <!-- Left Section: Related Audios -->
+  <div class="related-audios" style="flex: 1; background-color: #f9f9f9; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <h3>Poetry Audios</h3>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      <li style="display: flex; align-items: center; margin-bottom: 15px;">
+        <img src="images/john.jpg" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <div>
+          <p style="margin: 0; font-size: 10px; font-weight: bold;">Song Title 1</p>
+          <p style="margin: 0; font-size: 10px; color: gray;">Artist Name 1</p>
+        </div>
+      </li>
+      <li style="display: flex; align-items: center; margin-bottom: 15px;">
+        <img src="images/john.jpg" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <div>
+          <p style="margin: 0; font-size: 14px; font-weight: bold;">Song Title 2</p>
+          <p style="margin: 0; font-size: 10px; color: gray;">Artist Name 2</p>
+        </div>
+      </li>
+      <li style="display: flex; align-items: center; margin-bottom: 15px;">
+        <img src="images/john.jpg" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <div>
+          <p style="margin: 0; font-size: 10px; font-weight: bold;">Song Title 3</p>
+          <p style="margin: 0; font-size: 10px; color: gray;">Artist Name 3</p>
+        </div>
+      </li>
+      <li style="display: flex; align-items: center;">
+        <img src="images/john.jpg" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <div>
+          <p style="margin: 0; font-size: 10px; font-weight: bold;">Song Title 4</p>
+          <p style="margin: 0; font-size: 10px; color: gray;">Artist Name 4</p>
+        </div>
+      </li> <li style="display: flex; align-items: center;">
+        <img src="images/john.jpg" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <div>
+          <p style="margin: 0; font-size: 10px; font-weight: bold;">Song Title 4</p>
+          <p style="margin: 0; font-size: 10px; color: gray;">Artist Name 4</p>
+        </div>
+      </li> <li style="display: flex; align-items: center;">
+        <img src="images/john.jpg" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <div>
+          <p style="margin: 0; font-size: 10px; font-weight: bold;">Song Title 4</p>
+          <p style="margin: 0; font-size: 10px; color: gray;">Artist Name 4</p>
+        </div>
+      </li> <li style="display: flex; align-items: center;">
+        <img src="images/john.jpg" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <div>
+          <p style="margin: 0; font-size: 10px; font-weight: bold;">Song Title 4</p>
+          <p style="margin: 0; font-size: 10px; color: gray;">Artist Name 4</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Middle Section: Media Player -->
+  <div class="media-player" style="flex: 2; background-color: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <h3>Poetry Player</h3>
+    <div style="margin-bottom: 15px;">
+      <audio controls style="width: 100%;">
+        <source src="sample-audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div>
+      <video controls style="width: 100%; height: 280px;">
+        <source src="sample-video.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+    </div>
+  </div>
+
+<!-- Right Section: Related Videos -->
+<div class="video-list" style="flex: 3; background-color: #f9f9f9; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); height: 400px; overflow-y: auto;">
+  <h3>Poetry Videos</h3>
+  <div class="video-card" style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div class="thumbnail-container" style="flex-shrink: 0; width: 120px;">
+      <img src="https://i.ytimg.com/vi/OORUHkgg4IM/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; border-radius: 8px;">
+    </div>
+    <div class="video-info">
+      <h4 class="title" style="margin: 0; font-size: 10px; color: #333;">Top 10 Easy To Create JavaScript Games</h4>
+      <p class="channel-name" style="margin: 5px 0; font-size: 10px; color: #777;">CodingNepal</p>
+      <p class="views" style="font-size: 10px; color: #aaa;">27K Views <br>• 4 months ago</p>
+    </div>
+  </div>
+
+  <div class="video-card" style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div class="thumbnail-container" style="flex-shrink: 0; width: 120px;">
+      <img src="https://i.ytimg.com/vi/OORUHkgg4IM/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; border-radius: 8px;">
+    </div>
+    <div class="video-info">
+      <h4 class="title" style="margin: 0; font-size: 10px; color: #333;">Top 10 Easy To Create JavaScript Games</h4>
+      <p class="channel-name" style="margin: 5px 0; font-size: 10px; color: #777;">CodingNepal</p>
+      <p class="views" style="font-size: 10px; color: #aaa;">27K Views <br>• 4 months ago</p>
+    </div>
+  </div>
+
+  <div class="video-card" style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div class="thumbnail-container" style="flex-shrink: 0; width: 120px;">
+      <img src="https://i.ytimg.com/vi/OORUHkgg4IM/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; border-radius: 8px;">
+    </div>
+    <div class="video-info">
+      <h4 class="title" style="margin: 0; font-size: 10px; color: #333;">Top 10 Easy To Create JavaScript Games</h4>
+      <p class="channel-name" style="margin: 5px 0; font-size: 10px; color: #777;">CodingNepal</p>
+      <p class="views" style="font-size: 10px; color: #aaa;">27K Views <br>• 4 months ago</p>
+    </div>
+  </div>
+
+  <div class="video-card" style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div class="thumbnail-container" style="flex-shrink: 0; width: 120px;">
+      <img src="https://i.ytimg.com/vi/OORUHkgg4IM/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; border-radius: 8px;">
+    </div>
+    <div class="video-info">
+      <h4 class="title" style="margin: 0; font-size: 10px; color: #333;">Top 10 Easy To Create JavaScript Games</h4>
+      <p class="channel-name" style="margin: 5px 0; font-size: 10px; color: #777;">CodingNepal</p>
+      <p class="views" style="font-size: 10px; color: #aaa;">27K Views <br>• 4 months ago</p>
+    </div>
+  </div>
+  <!-- Add more video cards as needed -->
+
+</div>
+
+</div>
+<!-- Bottom Section -->
+<div class="artist-info-section" style="width: 100%; background-color: #f0f0f0; padding: 20px; box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+    <!-- About Us -->
+    <div style="flex: 1;">
+      <h3>About Us</h3>
+      <p style="margin: 0; font-size: 14px; color: #333;">
+        Welcome to our platform, where you can explore amazing music and videos from talented artists worldwide. Stay tuned for updates and discover new favorites!
+      </p>
+    </div>
+
+    <!-- Artist Information -->
+    <div style="flex: 1;">
+      <h3>Currently Poetry</h3>
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Artist:</strong> John Doe</p>
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Song:</strong> Melody of Life</p>
+      <p style="margin: 0; font-size: 14px; color: #333;"><strong>Album:</strong> Dreams Unfold</p>
+    </div>
+
+    <!-- Artist Image -->
+    <div style="flex-shrink: 0; width: 120px; text-align: center;">
+      <img src="images/john.jpg" alt="Currently Playing Artist" style="width: 100px; height: 100px; border-radius: 50%; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+    </div>
+  </div>
+</div>
+
+        {% endblock main %}
